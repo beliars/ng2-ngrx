@@ -3,6 +3,11 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { CoreModule } from './core/core.module';
+import { LearnRxjsModule } from './components/learn-rxjs/learn-rxjs.module';
+import { OperatorsModule } from './components/operators/operators.module';
+
+import { AppRoutingModule }   from './app-routing.module';
+
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -12,7 +17,10 @@ import { AppComponent } from './app.component';
   imports: [
     CoreModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule,
+    LearnRxjsModule,
+    OperatorsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
