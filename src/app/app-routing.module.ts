@@ -5,7 +5,8 @@ import { OperatorsComponent } from './components/operators/operators.component';
 
 
 export const routes: Routes = [
-  { path: '', component: LearnRxjsComponent },
+  { path: '', redirectTo: 'learn-rxjs', pathMatch: 'full' },
+  { path: 'learn-rxjs', component: LearnRxjsComponent },
   { path: 'operators', component: OperatorsComponent }
 ];
 

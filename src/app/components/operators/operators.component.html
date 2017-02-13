@@ -1,9 +1,15 @@
-<h2>
-  {{title}} component
-</h2>
-<div class="links">
-  <a [routerLink]="['']">
-    Go back
-  </a>
+<div class="operators">
+  <h2>
+    {{title}} component
+  </h2>
+  <ul>
+  <!--<li *ngFor="let user of users">{{ user.website }}</li>-->
+  <li *ngFor="let site of websites">{{ site }}</li>
+</ul>
+  <div class="links">
+    <a [routerLink]="['']">
+      Go back
+    </a>
+  </div>
 </div>
 

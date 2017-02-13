@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
+import { Subject } from 'rxjs/Rx';
 import 'rxjs/Rx';
 
 @Component({
@@ -167,6 +168,50 @@ export class LearnRxjsComponent {
     state.subscribe((state: any) => {
       document.querySelector('#count').innerHTML = state.count;
     });
+
+    /* Subject */
+
+    let subject = new Subject();
+
+    subject.subscribe({
+      next: (v) => console.log('ObserverA: ' + v)
+    });
+
+    subject.subscribe({
+      next: (v) => console.log('ObserverB: ' + v),
+      complete: () => console.log('ObserverB complete')
+    });
+
+    subject.subscribe((v) => console.log('ObserverC ' + v));
+
+    let testObservable = Observable.from([555, 777, 999]); 
+
+    testObservable.subscribe(subject);
+
+    // subject.next(555);
+    // subject.next(777);
+    // subject.next(999);
+    subject.complete();
+
+
+    /* Multicasted Observables */
+
+
+    let source = Observable.from([1111, 2222, 3333]);
+    let testSubject = new Subject();
+    let multicasted = source.multicast(testSubject);
+
+        // These are, under the hood, `subject.subscribe({...})`:
+
+    multicasted.subscribe({
+      next: (v) => console.log('multicastedObserverA: ' + v)
+    });
+    multicasted.subscribe({
+      next: (v) => console.log('multicastedObserverB: ' + v)
+    });
+
+    multicasted.connect();
+
   }
 }
 
