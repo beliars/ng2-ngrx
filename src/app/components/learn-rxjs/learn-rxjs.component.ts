@@ -11,9 +11,6 @@ import 'rxjs/Rx';
 export class LearnRxjsComponent {
   title = 'Learn Rxjs!';
   
-  constructor() {
-  }
-  
   ngOnInit() {
     console.log('Immutable init!');
   }
@@ -211,8 +208,37 @@ export class LearnRxjsComponent {
     });
 
     multicasted.connect();
-
+    
   }
+   
+   route = '/one/two/three/four';
+   subRoute1 = '/one/two/';
+   subRoute2 = '/one/two/three';
+   subRoute3 = '/two/three';
+   subRoute4 = '/two/three/qwe';
+   
+   checkRoute(route, subroute) {
+     
+    let mainArr = route.split('/');
+    let subArr = subroute.split('/');
+    let check = true;
+    //console.log(mainArr);
+  
+     for (let i = 0; i<subArr.length; i++) {
+       if (mainArr[i] == subArr[i]) {
+         continue;
+       }
+       else {
+         check = false;
+         break;
+       }
+     }
+     return console.log(check);
+   }
+  
+    constructor() {
+      this.checkRoute(this.route, this.subRoute2);
+    }
 }
 
 
